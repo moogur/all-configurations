@@ -1,0 +1,21 @@
+name: Verify labels in PR
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+
+jobs:
+  label-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: zwaldowski/match-label-action@v3
+        with:
+          allowed: type:feature,
+            type:test,
+            type:bugfix,
+            type:docs,
+            type:refactor,
+            type:config,
+            type:ci
