@@ -10,8 +10,10 @@
   "scripts": {
     "prepare": "husky install"
   },
+  "prettier": "@configurations/prettier",
   "dependencies": {},
   "devDependencies": {
+    "@configurations/prettier": "^0.1.0",
     "husky": "^7.0.4",
     "lerna": "^7.1.4"
   }
