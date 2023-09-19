@@ -1,4 +1,4 @@
-name: Test, lint, build, kanboard and sonarqube
+name: Update task for push action
 
 on:
   push:

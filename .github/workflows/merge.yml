@@ -1,4 +1,4 @@
-name: Create release drafter and update task
+name: Update task for merge action
 
 on:
   pull_request:

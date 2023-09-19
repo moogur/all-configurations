@@ -1,4 +1,4 @@
-name: Jest coverage and sonarqube reports for PR and update task
+name: Update task for pull request action
 
 on:
   pull_request:

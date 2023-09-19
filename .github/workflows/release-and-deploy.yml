@@ -1,4 +1,4 @@
-name: Release, deploy and update task
+name: Update task for deploy action
 
 on:
   push:
