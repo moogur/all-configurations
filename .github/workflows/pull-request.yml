@@ -1,0 +1,14 @@
+name: Update task for pull request action
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  kanboard:
+    uses: moogur/all-workflows/.github/workflows/kanboard.yml@master
+    secrets: inherit
+    with:
+      kanboard_columns: '81,82,83,84,85,86,87'
+      project_type: 'multi_branch'
+      event_type: 'pr'

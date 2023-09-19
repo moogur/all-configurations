@@ -1,0 +1,17 @@
+name: Update task for merge action
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  kanboard:
+    if: ${{ github.event.pull_request.merged }}
+    uses: moogur/all-workflows/.github/workflows/kanboard.yml@master
+    secrets: inherit
+    with:
+      kanboard_columns: '81,82,83,84,85,86,87'
+      project_type: 'multi_branch'
+      event_type: 'merge'

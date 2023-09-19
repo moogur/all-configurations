@@ -1,0 +1,57 @@
+#!/opt/homebrew/bin/bash
+
+# check commit message
+# - validate type
+function validateType() {
+  local value=$1
+  local branch_name=$2
+  local types_array=(feature bugfix ci config refactor test docs)
+
+  if [[ ! "${types_array[*]}" =~ ${value} ]]; then
+    echo "The branch name has an unknown type"
+    echo "type = $value"
+    echo "branch = $branch_name"
+    exit 1
+  fi
+}
+
+# - validate task number
+function validateTaskNumber() {
+  local value=$1
+  local branch_name=$2
+
+  local regexp="^CONF-[0-9]+$"
+  if [[ ! "$value" =~ $regexp ]]; then
+    echo "The branch name has the wrong task name"
+    echo "task number = $value"
+    echo "need format CONF-[0-9]+"
+    echo "branch = $branch_name"
+    exit 1
+  fi
+}
+
+# - not empty
+function checkEmptyBody() {
+  local value=$1
+  local branch_name=$2
+
+  if [[ -z "$value" ]]; then
+    echo "The branch name has an incorrect description"
+    echo "description = $value"
+    echo "branch = $branch_name"
+    exit 1
+  fi
+}
+
+branch_name=$(git branch --show-current)
+
+if [[ "$branch_name" != "master" ]]; then
+  # variables
+  mapfile -t branch_name_chunks < <( echo "$branch_name" | tr '/' '\n' | tr '_' '\n' )
+  tail="${branch_name_chunks[*]:2}"
+
+  # checking
+  validateType "${branch_name_chunks[0]}" "$branch_name"
+  validateTaskNumber "${branch_name_chunks[1]}" "$branch_name"
+  checkEmptyBody "$tail" "$branch_name"
+fi
