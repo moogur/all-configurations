@@ -1,0 +1,25 @@
+{
+  "name": "@configurations/eslint-backend",
+  "version": "0.1.0",
+  "description": "Shareable ESLint backend configuration",
+  "private": true,
+  "main": "index.js",
+  "prettier": "@configurations/prettier",
+  "dependencies": {
+    "@configurations/prettier": "^0.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "eslint": "^8.49.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-lodash": "^7.4.0",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "eslint-plugin-no-use-extend-native": "^0.5.0",
+    "eslint-plugin-optimize-regex": "^1.2.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-sonarjs": "^0.21.0",
+    "eslint-plugin-unicorn": "^48.0.1"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@configurations/prettier",
+  "version": "0.1.0",
+  "description": "Shareable Prettier configuration",
+  "private": true,
+  "main": "index.json"
+}

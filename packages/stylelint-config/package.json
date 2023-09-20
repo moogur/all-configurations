@@ -1,0 +1,17 @@
+{
+  "name": "@configurations/stylelint",
+  "version": "0.1.0",
+  "description": "Shareable StyleLint configuration",
+  "private": true,
+  "main": "index.js",
+  "prettier": "@configurations/prettier",
+  "dependencies": {
+    "@configurations/prettier": "^0.1.0",
+    "stylelint": "^15.10.3",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended-scss": "^13.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-prettier": "^4.0.2",
+    "stylelint-scss": "^5.2.1"
+  }
+}
