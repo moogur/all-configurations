@@ -2,7 +2,7 @@
   "name": "@configurations/eslint-frontend",
   "version": "0.1.0",
   "description": "Shareable ESLint frontend configuration",
-  "private": true,
+  "license": "ISC",
   "main": "index.js",
   "prettier": "@configurations/prettier",
   "dependencies": {

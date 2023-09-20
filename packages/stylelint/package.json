@@ -2,7 +2,7 @@
   "name": "@configurations/stylelint",
   "version": "0.1.0",
   "description": "Shareable StyleLint configuration",
-  "private": true,
+  "license": "ISC",
   "main": "index.js",
   "prettier": "@configurations/prettier",
   "dependencies": {
