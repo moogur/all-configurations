@@ -1,6 +1,6 @@
 {
   "name": "@configurations/tsconfig-frontend",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Shareable tsconfig frontend configuration",
   "license": "ISC",
   "tsconfig": "index.json",
