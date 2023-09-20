@@ -3,5 +3,6 @@
   "version": "0.1.0",
   "description": "Shareable tsconfig backend configuration",
   "license": "ISC",
-  "tsconfig": "index.json"
+  "tsconfig": "index.json",
+  "repository": "https://github.com/moogur/all-configurations"
 }

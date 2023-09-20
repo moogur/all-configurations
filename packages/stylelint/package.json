@@ -4,6 +4,7 @@
   "description": "Shareable StyleLint configuration",
   "license": "ISC",
   "main": "index.js",
+  "repository": "https://github.com/moogur/all-configurations",
   "prettier": "@moogur/prettier",
   "dependencies": {
     "@moogur/prettier": "^0.1.0",

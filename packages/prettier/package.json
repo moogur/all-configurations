@@ -3,5 +3,6 @@
   "version": "0.1.0",
   "description": "Shareable Prettier configuration",
   "license": "ISC",
-  "main": "index.json"
+  "main": "index.json",
+  "repository": "https://github.com/moogur/all-configurations"
 }
