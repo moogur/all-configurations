@@ -1,12 +1,13 @@
 {
-  "name": "@configurations/stylelint",
+  "name": "@moogur/stylelint",
   "version": "0.1.0",
   "description": "Shareable StyleLint configuration",
-  "private": true,
+  "license": "ISC",
   "main": "index.js",
-  "prettier": "@configurations/prettier",
+  "repository": "https://github.com/moogur/all-configurations",
+  "prettier": "@moogur/prettier",
   "dependencies": {
-    "@configurations/prettier": "^0.1.0",
+    "@moogur/prettier": "^0.1.0",
     "stylelint": "^15.10.3",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended-scss": "^13.0.0",

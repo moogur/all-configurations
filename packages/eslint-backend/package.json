@@ -1,12 +1,13 @@
 {
-  "name": "@configurations/eslint-backend",
+  "name": "@moogur/eslint-backend",
   "version": "0.1.0",
   "description": "Shareable ESLint backend configuration",
-  "private": true,
+  "license": "ISC",
   "main": "index.js",
-  "prettier": "@configurations/prettier",
+  "repository": "https://github.com/moogur/all-configurations",
+  "prettier": "@moogur/prettier",
   "dependencies": {
-    "@configurations/prettier": "^0.1.0",
+    "@moogur/prettier": "^0.1.0",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
     "eslint": "^8.49.0",

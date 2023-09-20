@@ -1,7 +1,8 @@
 {
-  "name": "@configurations/prettier",
+  "name": "@moogur/prettier",
   "version": "0.1.0",
   "description": "Shareable Prettier configuration",
-  "private": true,
-  "main": "index.json"
+  "license": "ISC",
+  "main": "index.json",
+  "repository": "https://github.com/moogur/all-configurations"
 }

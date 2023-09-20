@@ -15,3 +15,8 @@ jobs:
       kanboard_columns: '81,82,83,84,85,86,87'
       project_type: 'multi_branch'
       event_type: 'merge'
+
+  publish:
+    needs: kanboard
+    uses: moogur/all-workflows/.github/workflows/deploy_for_lerna.yml@master
+    secrets: inherit

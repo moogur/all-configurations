@@ -1,10 +1,8 @@
 {
-  "name": "@configurations/tsconfig-frontend",
+  "name": "@moogur/tsconfig-frontend",
   "version": "0.1.0",
   "description": "Shareable tsconfig frontend configuration",
-  "private": true,
+  "license": "ISC",
   "tsconfig": "index.json",
-  "devDependencies": {
-    "@configurations/tsconfig-checks": "^0.1.0"
-  }
+  "repository": "https://github.com/moogur/all-configurations"
 }
