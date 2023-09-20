@@ -1,6 +1,6 @@
 {
   "name": "@configurations/tsconfig-backend",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Shareable tsconfig backend configuration",
   "license": "ISC",
   "tsconfig": "index.json",

@@ -1,6 +1,6 @@
 {
   "name": "@configurations/stylelint",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Shareable StyleLint configuration",
   "license": "ISC",
   "main": "index.js",
