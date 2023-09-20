@@ -1,5 +1,5 @@
 {
-  "name": "@configurations/prettier",
+  "name": "@moogur/prettier",
   "version": "0.1.0",
   "description": "Shareable Prettier configuration",
   "license": "ISC",

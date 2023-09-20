@@ -1,10 +1,7 @@
 {
-  "name": "@configurations/tsconfig-backend",
+  "name": "@moogur/tsconfig-backend",
   "version": "0.1.0",
   "description": "Shareable tsconfig backend configuration",
   "license": "ISC",
-  "tsconfig": "index.json",
-  "devDependencies": {
-    "@configurations/tsconfig-checks": "^0.1.0"
-  }
+  "tsconfig": "index.json"
 }
