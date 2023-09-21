@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    // Strict Checks group
     "alwaysStrict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -11,16 +10,14 @@
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
 
-    // Linter Checks group
-    "noImplicitReturns": true, // TODO https://eslint.org/docs/rules/consistent-return ?
-    "noFallthroughCasesInSwitch": true, // https://eslint.org/docs/rules/no-fallthrough
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
 
-    "noUnusedLocals": true, // https://eslint.org/docs/rules/no-unused-vars
-    "noUnusedParameters": true, // https://eslint.org/docs/rules/no-unused-vars#args
-    "allowUnreachableCode": false, // TODO https://eslint.org/docs/rules/no-unreachable ?
-    "allowUnusedLabels": false, // https://eslint.org/docs/rules/no-unused-labels
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
 
-    // Base Strict Checks group
     "noImplicitUseStrict": false,
     "suppressExcessPropertyErrors": false,
     "suppressImplicitAnyIndexErrors": false,
