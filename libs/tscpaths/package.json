@@ -1,0 +1,19 @@
+{
+  "name": "@moogur/tscpaths",
+  "version": "0.1.0",
+  "description": "Replace absolute paths to relative paths after typescript compilation",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": "https://github.com/moogur/all-configurations",
+  "bin": {
+    "tscpaths": "index.js"
+  },
+  "prettier": "@moogur/prettier",
+  "devDependencies": {
+    "@moogur/prettier": "^0.1.0"
+  },
+  "dependencies": {
+    "commander": "^2.20.0",
+    "globby": "^9.2.0"
+  }
+}
