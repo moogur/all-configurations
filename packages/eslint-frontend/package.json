@@ -1,6 +1,6 @@
 {
-  "name": "@moogur/eslint-frontend",
-  "version": "0.1.0",
+  "name": "@moogur/eslint-config-eslint-frontend",
+  "version": "0.1.1",
   "description": "Shareable ESLint frontend configuration",
   "license": "ISC",
   "main": "index.js",
