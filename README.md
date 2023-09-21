@@ -9,6 +9,10 @@
 - tsconfig-backend - настройки typescript для фронтенд проектов
 - tsconfig-frontend - настройки typescript для бекенд проектов
 
+## Список библиотек
+
+- tscpaths - форк https://github.com/joonhocho/tscpaths, с фиксами
+
 ## Публикация новый версий
 
 Публикация новых версий происходит с помощью github actions при мерже ветки задачи в master.
