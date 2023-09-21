@@ -1,12 +1,13 @@
 #! /usr/bin/env node
 
-import * as program from 'commander';
+import { Command } from 'commander';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { sync } from 'globby';
 import { dirname, relative, resolve } from 'path';
 
-import { loadConfig } from './util';
+import { loadConfig } from './util.js';
 
+const program = new Command();
 program
   .version('0.0.1')
   .option('-p, --project <file>', 'path to tsconfig.json')

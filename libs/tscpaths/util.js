@@ -1,4 +1,5 @@
 import { dirname, resolve } from 'path';
+import { readFileSync } from 'fs';
 
 export function mapPaths(paths, mapper) {
   return Object.keys(paths).reduce((accumulator, key) => {
@@ -16,7 +17,7 @@ export function loadConfig(file) {
       outDir: undefined,
       paths: undefined,
     },
-  } = require(file);
+  } = JSON.parse(readFileSync(file, 'utf-8'));
 
   const config = {};
 
@@ -26,7 +27,15 @@ export function loadConfig(file) {
 
   if (!ext) return config;
 
-  const parentConfig = loadConfig(resolve(dirname(file), ext.startWith('.') ? ext : `node_modules/${ext}`));
+  const parentDirname = dirname(file);
+  let parentConfig;
+
+  if (ext.startsWith('.')) {
+    parentConfig = loadConfig(resolve(parentDirname, ext));
+  } else {
+    const { tsconfig } = JSON.parse(readFileSync(resolve(parentDirname, 'node_modules', ext, 'package.json'), 'utf-8'));
+    parentConfig = loadConfig(resolve(parentDirname, 'node_modules', ext, tsconfig));
+  }
 
   return {
     ...parentConfig,
