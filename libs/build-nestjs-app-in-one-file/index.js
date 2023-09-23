@@ -16,7 +16,7 @@ if (!out) out = './dist';
 if (!src) src = './src';
 
 // build
-exec(`rimraf ${out}`);
+exec(`rm -fr ${out}`);
 exec(`ncc build ${src}/main.ts --minify --out ${out}`);
 
 // add swagger
@@ -27,12 +27,12 @@ exec(`cp node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js ${out}/swa
 // add migrations
 const tempDirMigration = '.' + path.resolve('/', 'temp-dist', src);
 
-exec(`tsc --outDir temp-dist`);
+exec('tsc --outDir temp-dist');
 exec(
   `if [ -d ${tempDirMigration} ]; then cp -r ${tempDirMigration}/migrations ${out}; else cp -r temp-dist/migrations ${out}; fi`,
 );
-exec(`rm -fr temp-dist`);
+exec('rm -fr temp-dist');
 
 // delete side files
-exec(`rimraf --glob '${out}/**/*.d.ts'`);
+exec(`find ${out} -type f -iname "*.d.ts" -delete`);
 exec(`find ${out} -empty -type d -delete`);
