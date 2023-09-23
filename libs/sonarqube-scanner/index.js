@@ -1,9 +1,9 @@
 #! /usr/bin/env node
 
-import { Command } from 'commander';
-import { scanner } from 'sonarqube-scanner';
+const { Command } = require('commander');
+const scanner = require('sonarqube-scanner');
 
-import { latestTag, branch } from './util.js';
+const { latestTag, branch } = require('./helpers');
 
 const program = new Command();
 program
