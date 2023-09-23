@@ -1,6 +1,6 @@
 {
   "name": "@moogur/eslint-config-eslint-backend",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Shareable ESLint backend configuration",
   "license": "ISC",
   "main": "index.js",

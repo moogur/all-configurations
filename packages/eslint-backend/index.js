@@ -25,7 +25,7 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:promise/recommended',
-    "plugin:lodash/recommended",
+    'plugin:lodash/recommended',
   ],
   root: true,
   env: {
@@ -51,26 +51,19 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/order': [
-      'error', {
-        'groups': [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          ['sibling', 'index'],
-          'type',
-          'object'
-        ],
-        'alphabetize': {
-          'order': 'asc',
-          'caseInsensitive': false
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', ['sibling', 'index'], 'type', 'object'],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: false,
         },
-        'newlines-between': 'always'
-      }
+        'newlines-between': 'always',
+      },
     ],
 
     'unicorn/prefer-top-level-await': 'off',
-    'unicorn/prevent-abbreviations': ['error', { 'checkFilenames': false }],
+    'unicorn/prevent-abbreviations': ['error', { checkFilenames: false }],
     'unicorn/no-array-for-each': 'off',
     'unicorn/no-array-reduce': 'off',
     'unicorn/no-null': 'off',
@@ -83,9 +76,9 @@ module.exports = {
     'no-loops/no-loops': 2,
     'no-use-extend-native/no-use-extend-native': 2,
 
-    'lodash/import-scope': [2, "member"],
+    'lodash/import-scope': [2, 'member'],
     'lodash/prefer-lodash-typecheck': 'off',
-    'lodash/matches-shorthand': [2, "never"],
-    "lodash/prefer-lodash-method": [2, {"ignoreObjects": ["^this.[a-zA-Z]+Repository"]}]
+    'lodash/matches-shorthand': [2, 'never'],
+    'lodash/prefer-lodash-method': [2, { ignoreObjects: ['^this.[a-zA-Z]+Repository'] }],
   },
 };
