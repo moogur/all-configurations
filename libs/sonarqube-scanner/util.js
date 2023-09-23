@@ -1,4 +1,4 @@
-import childProcess from 'child_process';
+const childProcess = require('child_process');
 
 function exec(command) {
   try {
@@ -9,6 +9,7 @@ function exec(command) {
     return '';
   }
 }
+exports.exec = exec;
 
-export const branch = exec('git rev-parse --abbrev-ref HEAD');
-export const latestTag = exec('git describe --abbrev=0 --tags', '0.0.0').replace(/^v?/, '');
+exports.branch = exec('git rev-parse --abbrev-ref HEAD');
+exports.latestTag = exec('git describe --abbrev=0 --tags', '0.0.0').replace(/^v?/, '');
