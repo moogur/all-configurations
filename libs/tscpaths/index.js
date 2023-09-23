@@ -5,7 +5,7 @@ import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { sync } from 'globby';
 import { dirname, relative, resolve } from 'path';
 
-import { loadConfig } from './util.js';
+import { loadConfig } from './utils.js';
 
 const program = new Command();
 program

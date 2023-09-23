@@ -3,7 +3,7 @@
 const { Command } = require('commander');
 const scanner = require('sonarqube-scanner');
 
-const { latestTag, branch } = require('./helpers');
+const { latestTag, branch } = require('./utils');
 
 const program = new Command();
 program
