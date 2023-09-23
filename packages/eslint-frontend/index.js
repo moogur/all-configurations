@@ -33,7 +33,7 @@ module.exports = {
     node: true,
     browser: true,
   },
-  ignorePatterns: ['.eslintrc.json', 'node_modules', 'scripts', 'src/vite-env.d.ts', 'src/**/*.vue'],
+  ignorePatterns: ['node_modules', 'scripts', 'src/vite-env.d.ts', 'src/**/*.vue'],
   settings: {
     'import/ignore': ['node_modules'],
   },

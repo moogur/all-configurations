@@ -5,7 +5,7 @@ module.exports = {
     'prettier/prettier': true,
     'block-no-empty': true,
     'max-empty-lines': 1,
-    'rule-empty-line-before': ['always', { 'ignore': 'first-nested' }],
+    'rule-empty-line-before': ['always', { ignore: 'first-nested' }],
     'at-rule-empty-line-before': 'always',
     'color-hex-case': 'lower',
     'color-no-invalid-hex': true,
@@ -35,15 +35,15 @@ module.exports = {
       true,
       {
         'border-in-box-model': true,
-        'empty-line-between-groups': true
-      }
-    ]
+        'empty-line-between-groups': true,
+      },
+    ],
   },
-  'customSyntax': 'postcss-scss',
-  'overrides': [
+  customSyntax: 'postcss-scss',
+  overrides: [
     {
-      'files': ['**/*.vue'],
-      'customSyntax': 'postcss-html'
-    }
-  ]
+      files: ['**/*.vue'],
+      customSyntax: 'postcss-html',
+    },
+  ],
 };
