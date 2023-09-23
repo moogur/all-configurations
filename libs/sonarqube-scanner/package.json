@@ -1,0 +1,19 @@
+{
+  "name": "@moogur/sonarqube-scanner",
+  "version": "0.1.0",
+  "description": "Publishing sonarqube results to the server",
+  "license": "ISC",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/moogur/all-configurations",
+  "bin": {
+    "sonarqube-scanner": "index.js"
+  },
+  "prettier": "@moogur/prettier",
+  "devDependencies": {
+    "@moogur/prettier": "^0.1.0"
+  },
+  "dependencies": {
+    "sonarqube-scanner": "^3.1.0"
+  }
+}
