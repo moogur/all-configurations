@@ -1,6 +1,6 @@
 {
   "name": "@moogur/build-nestjs-app-in-one-file",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Building an nestjs application into a single file",
   "license": "ISC",
   "main": "index.js",
@@ -13,8 +13,7 @@
   "devDependencies": {
     "@moogur/prettier": "^0.1.0"
   },
-  "dependencies": {
-    "@vercel/ncc": "^0.38.0",
-    "rimraf": "^5.0.1"
+  "peerDependencies": {
+    "@vercel/ncc": "^0.38.0"
   }
 }
