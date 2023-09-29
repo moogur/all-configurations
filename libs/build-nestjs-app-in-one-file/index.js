@@ -1,9 +1,8 @@
 #! /usr/bin/env node
 
-import path from 'path';
-import { Command } from 'commander';
-
-import { exec } from './utils.js';
+const path = require('path');
+const { Command } = require('commander');
+const { exec } = require('@moogur/helpers');
 
 const program = new Command();
 program.version('0.0.1').option('-s, --src <path>', 'source path').option('-o, --out <path>', 'output build directory');
