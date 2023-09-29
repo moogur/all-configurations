@@ -1,0 +1,12 @@
+{
+  "name": "@moogur/helpers",
+  "version": "0.1.0",
+  "description": "General auxiliary utilities and functions",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": "https://github.com/moogur/all-configurations",
+  "prettier": "@moogur/prettier",
+  "devDependencies": {
+    "@moogur/prettier": "^0.1.0"
+  }
+}

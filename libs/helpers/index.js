@@ -12,4 +12,5 @@ function exec(command) {
 exports.exec = exec;
 
 exports.branch = exec('git rev-parse --abbrev-ref HEAD');
+exports.shaLatestCommit = exec('git rev-parse --short HEAD');
 exports.latestTag = exec('git describe --abbrev=0 --tags', '0.0.0').replace(/^v?/, '');
