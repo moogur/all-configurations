@@ -10,16 +10,27 @@ program
   .option('-s, --src <path>', 'source root path')
   .option('-c, --coverage <path>', 'output path to test coverage')
   .option('-n, --projectName <name>', 'project name')
-  .option('-k, --projectKey <key>', 'project key');
+  .option('-k, --projectKey <key>', 'project key')
+  .option('-t, --skipTests', 'do I need to skip tests');
 
 program.parse(process.argv);
 
-let { coverage, src, projectName, projectKey } = program;
+let { coverage, src, projectName, projectKe, skipTests } = program;
 
 if (!projectName) throw new Error('--projectName must be specified');
 if (!projectKey) throw new Error('--projectKey must be specified');
 if (!src) src = 'src';
 if (!coverage) coverage = 'coverage';
+
+let testConfig = {};
+if (!skipTests) {
+  testConfig = {
+    'sonar.tests': src,
+    'sonar.test.inclusions': `${src}/**/tests/**/*.(spec|test).ts`,
+    'sonar.typescript.lcov.reportPaths': `${coverage}/unit/lcov.info`,
+    'sonar.testExecutionReportPaths': `${coverage}/unit/test-reporter.xml`,
+  };
+}
 
 // run scanner
 scanner.cli(
@@ -34,10 +45,7 @@ scanner.cli(
       'sonar.projectBaseDir': '.',
       'sonar.sources': src,
       'sonar.exclusions': `${src}/**/tests/**/*,${src}/configs/**/*,${src}/migrations/**/*`,
-      'sonar.tests': src,
-      'sonar.test.inclusions': `${src}/**/tests/**/*.(spec|test).ts`,
-      'sonar.typescript.lcov.reportPaths': `${coverage}/unit/lcov.info`,
-      'sonar.testExecutionReportPaths': `${coverage}/unit/test-reporter.xml`,
+      ...testConfig,
     },
   },
   process.exit,
