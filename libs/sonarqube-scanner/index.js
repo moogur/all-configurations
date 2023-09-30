@@ -15,15 +15,16 @@ program
 
 program.parse(process.argv);
 
-let { coverage, src, projectName, projectKe, skipTests } = program;
+let { coverage, src, projectName, projectKey, skipTests } = program;
 
 if (!projectName) throw new Error('--projectName must be specified');
 if (!projectKey) throw new Error('--projectKey must be specified');
 if (!src) src = 'src';
-if (!coverage) coverage = 'coverage';
 
 let testConfig = {};
 if (!skipTests) {
+  if (!coverage) coverage = 'coverage';
+
   testConfig = {
     'sonar.tests': src,
     'sonar.test.inclusions': `${src}/**/tests/**/*.(spec|test).ts`,
