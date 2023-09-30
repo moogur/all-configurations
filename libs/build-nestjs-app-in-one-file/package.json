@@ -1,6 +1,6 @@
 {
   "name": "@moogur/build-nestjs-app-in-one-file",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Building an nestjs application into a single file",
   "license": "ISC",
   "main": "index.js",

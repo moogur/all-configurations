@@ -28,7 +28,7 @@ const tempDirMigration = '.' + path.resolve('/', 'temp-dist', src);
 
 exec('tsc --outDir temp-dist');
 exec(
-  `if [ -d ${tempDirMigration} ]; then cp -r ${tempDirMigration}/migrations ${out}; else cp -r temp-dist/migrations ${out}; fi`,
+  `if [ -d ${tempDirMigration} ]; then if [ -d ${tempDirMigration}/migrations ]; then cp -r ${tempDirMigration}/migrations ${out}; fi; else if [ -d temp-dist/migrations ]; then cp -r temp-dist/migrations ${out}; fi; fi`,
 );
 exec('rm -fr temp-dist');
 
