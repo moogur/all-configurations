@@ -1,6 +1,6 @@
 {
   "name": "@moogur/sonarqube-scanner",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Publishing sonarqube results to the server",
   "license": "ISC",
   "main": "index.js",
