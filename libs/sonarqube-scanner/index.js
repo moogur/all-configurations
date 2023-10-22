@@ -4,9 +4,11 @@ const { Command } = require('commander');
 const scanner = require('sonarqube-scanner');
 const { latestTag, branch } = require('@moogur/helpers');
 
+const packageJson = require('./package.json');
+
 const program = new Command();
 program
-  .version('0.0.1')
+  .version(packageJson.version)
   .option('-s, --src <path>', 'source root path')
   .option('-c, --coverage <path>', 'output path to test coverage')
   .option('-n, --projectName <name>', 'project name')

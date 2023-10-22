@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "libs/*"
+    "libs/*",
+    "builders/*"
   ],
   "engines": {
     "node": "18.16.0"
