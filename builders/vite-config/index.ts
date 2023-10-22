@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 
@@ -6,24 +7,25 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import viteCompression from 'vite-plugin-compression';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import viteImagemin from 'vite-plugin-imagemin';
-import { ProxyOptions } from 'vite';
+import { ProxyOptions, UserConfig } from 'vite';
 
-function getAliases(currentDirname: string, tsconfigPaths: Record<string, string[]> = {}) {
-  return Object.entries(tsconfigPaths).reduce<Array<{ replacement: string; find: string }>>(
-    (accumulator, [key, value]) => {
-      const preparedKey = key.split('/')[0] ?? '';
-      const preparedValue = value[0] ?? '';
-      const preparedPath = path.resolve(currentDirname, preparedValue.replace(/(\*|index.ts)?$/, ''));
+const currentDirname = process.env['PWD'];
+const tsconfig = JSON.parse(readFileSync(path.resolve(currentDirname, 'tsconfig.json'), 'utf8'));
 
-      if (accumulator.every((item) => item.replacement !== preparedPath)) {
-        accumulator.push({ find: preparedKey, replacement: preparedPath });
-      }
+const alias = Object.entries(tsconfig.compilerOptions.paths ?? {}).reduce<Array<{ replacement: string; find: string }>>(
+  (accumulator, [key, value]) => {
+    const preparedKey = key.split('/')[0] ?? '';
+    const preparedValue = value[0] ?? '';
+    const preparedPath = path.resolve(currentDirname, preparedValue.replace(/(\*|index.ts)?$/, ''));
 
-      return accumulator;
-    },
-    [{ find: '@fonts', replacement: path.resolve(currentDirname, 'assets/fonts') }],
-  );
-}
+    if (accumulator.every((item) => item.replacement !== preparedPath)) {
+      accumulator.push({ find: preparedKey, replacement: preparedPath });
+    }
+
+    return accumulator;
+  },
+  [{ find: '@fonts', replacement: path.resolve(currentDirname, 'assets/fonts') }],
+);
 
 const build = {
   outDir: './dist',
@@ -73,17 +75,7 @@ const css = {
   },
 };
 
-export function getConfig({
-  mode,
-  tsconfigPaths,
-  currentDirname,
-  proxy,
-}: {
-  mode: string;
-  tsconfigPaths?: Record<string, string[]>;
-  currentDirname: string;
-  proxy: Record<string, string | ProxyOptions>;
-}) {
+export function getConfig({ mode, proxy }: { mode: string; proxy: Record<string, string | ProxyOptions> }): UserConfig {
   switch (mode) {
     case 'analyze': {
       return {
@@ -102,7 +94,7 @@ export function getConfig({
           }),
         ],
         build,
-        resolve: { alias: getAliases(currentDirname, tsconfigPaths) },
+        resolve: { alias },
       };
     }
 
@@ -179,7 +171,7 @@ export function getConfig({
         ],
         build,
         preview: { port: 3001 },
-        resolve: { alias: getAliases(currentDirname, tsconfigPaths) },
+        resolve: { alias },
       };
     }
 
@@ -193,7 +185,7 @@ export function getConfig({
           port: 3000,
           proxy,
         },
-        resolve: { alias: getAliases(currentDirname, tsconfigPaths) },
+        resolve: { alias },
       };
     }
   }
