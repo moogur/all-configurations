@@ -6,10 +6,11 @@ import { sync } from 'globby';
 import { dirname, relative, resolve } from 'path';
 
 import { loadConfig } from './utils.js';
+import packageJson from './package.json';
 
 const program = new Command();
 program
-  .version('0.0.1')
+  .version(packageJson.version)
   .option('-p, --project <file>', 'path to tsconfig.json')
   .option('-s, --src <path>', 'source root path')
   .option('-o, --out <path>', 'output root path');

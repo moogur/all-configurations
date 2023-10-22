@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/*", "libs/*"],
+  "packages": ["packages/*", "libs/*", "builders/*"],
   "version": "independent",
   "command": {
     "run": {

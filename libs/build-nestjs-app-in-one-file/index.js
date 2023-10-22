@@ -4,8 +4,13 @@ const path = require('path');
 const { Command } = require('commander');
 const { exec } = require('@moogur/helpers');
 
+const packageJson = require('./package.json');
+
 const program = new Command();
-program.version('0.0.1').option('-s, --src <path>', 'source path').option('-o, --out <path>', 'output build directory');
+program
+  .version(packageJson.version)
+  .option('-s, --src <path>', 'source path')
+  .option('-o, --out <path>', 'output build directory');
 
 program.parse(process.argv);
 
