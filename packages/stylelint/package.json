@@ -1,6 +1,6 @@
 {
   "name": "@moogur/stylelint",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Shareable StyleLint configuration",
   "license": "ISC",
   "main": "index.js",
@@ -10,11 +10,11 @@
     "@moogur/prettier": "^0.1.0"
   },
   "dependencies": {
-    "stylelint": "^15.10.3",
+    "stylelint": "^16.9.0",
     "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-recommended-scss": "^13.0.0",
-    "stylelint-order": "^6.0.3",
-    "stylelint-prettier": "^4.0.2",
-    "stylelint-scss": "^5.2.1"
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-prettier": "^5.0.2",
+    "stylelint-scss": "^6.7.0"
   }
 }
