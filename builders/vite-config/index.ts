@@ -27,60 +27,80 @@ const alias = Object.entries(tsconfig.compilerOptions.paths ?? {}).reduce<Array<
   [{ find: '@fonts', replacement: path.resolve(currentDirname, 'assets/fonts') }],
 );
 
-const build = {
-  outDir: './dist',
-  sourcemap: false,
-  rollupOptions: {
-    output: {
-      manualChunks: (filePath: string) => {
-        if (/node_modules/.test(filePath)) {
-          const libraryName = filePath.split('node_modules/')[1]?.split('/')[0]?.replace('@', '');
-          if (libraryName === 'vue' || libraryName === 'vue-router') return `lib.vue`;
+const getBuildOptions = ({
+  getJsChunksFileName,
+}: {
+  getJsChunksFileName?: (libraryName: string, rawLibraryName: string) => string | void;
+}) => {
+  return {
+    outDir: './dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: (filePath: string) => {
+          if (/node_modules/.test(filePath)) {
+            const libraryName = filePath.split('node_modules/')[1]?.split('/')[0]?.replace('@', '');
+            if (libraryName === 'vue' || libraryName === 'vue-router' || libraryName === 'pinia') return `lib.vue`;
 
-          return 'lib.other';
-        }
+            return getJsChunksFileName?.(libraryName, filePath) ?? 'lib.other';
+          }
 
-        return 'app';
+          return 'app';
+        },
+        assetFileNames: ({ name }: { name?: string }) => {
+          switch (true) {
+            case /\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(name ?? ''): {
+              return `images/[name].[hash][extname]`;
+            }
+
+            case /\.css$/i.test(name ?? ''): {
+              return `styles/[name].[hash][extname]`;
+            }
+
+            case /\.(ttf|otf|woff|woff2)$/i.test(name ?? ''): {
+              return `fonts/[name][extname]`;
+            }
+
+            default: {
+              return `assets/[name].[hash][extname]`;
+            }
+          }
+        },
+        chunkFileNames: 'js/[name].[hash].js',
+        entryFileNames: 'js/[name].[hash].js',
       },
-      assetFileNames: ({ name }: { name?: string }) => {
-        switch (true) {
-          case /\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(name ?? ''): {
-            return `images/[name].[hash][extname]`;
-          }
-
-          case /\.css$/i.test(name ?? ''): {
-            return `styles/[name].[hash][extname]`;
-          }
-
-          case /\.(ttf|otf|woff|woff2)$/i.test(name ?? ''): {
-            return `fonts/[name][extname]`;
-          }
-
-          default: {
-            return `assets/[name].[hash][extname]`;
-          }
-        }
-      },
-      chunkFileNames: 'js/[name].[hash].js',
-      entryFileNames: 'js/[name].[hash].js',
     },
-  },
+  };
 };
 
-const css = {
-  preprocessorOptions: {
-    scss: {
-      additionalData: `@import "@shared/styles/variables/scss.scss";@import "@shared/styles/mixins/index.scss";`,
+const getCssOptions = (preprocessorOptions?: { additionalData: string }) => {
+  if (!preprocessorOptions) return {};
+
+  return {
+    css: {
+      preprocessorOptions: {
+        scss: preprocessorOptions,
+      },
     },
-  },
+  };
 };
 
-export function getConfig({ mode, proxy }: { mode: string; proxy: Record<string, string | ProxyOptions> }): UserConfig {
+export function getConfig({
+  mode,
+  proxy,
+  preprocessorOptions,
+  getJsChunksFileName,
+}: {
+  mode: string;
+  proxy: Record<string, string | ProxyOptions>;
+  preprocessorOptions?: { additionalData: string };
+  getJsChunksFileName?: (libraryName: string, rawLibraryName: string) => string | void;
+}): UserConfig {
   switch (mode) {
     case 'analyze': {
       return {
         root: currentDirname,
-        css,
+        ...getCssOptions(preprocessorOptions),
         plugins: [
           vue(),
           createHtmlPlugin({ template: './public/index-dev.html' }),
@@ -93,7 +113,7 @@ export function getConfig({ mode, proxy }: { mode: string; proxy: Record<string,
             filename: './node_modules/.cache/visualizer/stats.html',
           }),
         ],
-        build,
+        build: getBuildOptions({ getJsChunksFileName }),
         resolve: { alias },
       };
     }
@@ -101,7 +121,7 @@ export function getConfig({ mode, proxy }: { mode: string; proxy: Record<string,
     case 'production': {
       return {
         root: currentDirname,
-        css,
+        ...getCssOptions(preprocessorOptions),
         plugins: [
           vue(),
           viteImagemin({
@@ -169,7 +189,7 @@ export function getConfig({ mode, proxy }: { mode: string; proxy: Record<string,
             },
           }),
         ],
-        build,
+        build: getBuildOptions({ getJsChunksFileName }),
         preview: { port: 3001 },
         resolve: { alias },
       };
@@ -178,7 +198,7 @@ export function getConfig({ mode, proxy }: { mode: string; proxy: Record<string,
     default: {
       return {
         root: currentDirname,
-        css,
+        ...getCssOptions(preprocessorOptions),
         plugins: [vue(), createHtmlPlugin({ template: '/index-dev.html' })],
         build: { sourcemap: true },
         server: {
