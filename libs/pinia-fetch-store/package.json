@@ -1,6 +1,6 @@
 {
   "name": "@moogur/pinia-fetch-store",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fetch query library for store vue pinia",
   "license": "ISC",
   "main": "dist/index.js",
