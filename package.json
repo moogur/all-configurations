@@ -10,6 +10,7 @@
     "node": "20.18.0"
   },
   "scripts": {
+    "build": "lerna run build --scope='@moogur/*'",
     "prepare": "husky install"
   },
   "prettier": "@moogur/prettier",
