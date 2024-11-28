@@ -33,6 +33,7 @@ const emptyResponse = {
   text: () => Promise.resolve(''),
   body: null,
   bodyUsed: false,
+  bytes: undefined,
 } as const;
 
 export const baseHttpError499 = new HTTPError({ ...emptyResponse, status: HttpStatus.ABORT, statusText: 'AbortError' }, null);
