@@ -73,7 +73,10 @@ const getBuildOptions = ({
   };
 };
 
-const getCssOptions = (preprocessorOptions?: { additionalData: string }) => {
+const getCssOptions = (preprocessorOptions?: {
+  additionalData?: string;
+  api?: 'modern-compiler' | 'modern' | 'legacy';
+}) => {
   if (!preprocessorOptions) return {};
 
   return {
@@ -93,8 +96,8 @@ export function getConfig({
 }: {
   mode: string;
   proxy: Record<string, string | ProxyOptions>;
-  preprocessorOptions?: { additionalData: string };
-  getJsChunksFileName?: (libraryName: string, rawLibraryName: string) => string | void;
+  preprocessorOptions?: Parameters<typeof getCssOptions>[0];
+  getJsChunksFileName?: Parameters<typeof getBuildOptions>[0]['getJsChunksFileName'];
 }): UserConfig {
   switch (mode) {
     case 'analyze': {
@@ -155,14 +158,6 @@ export function getConfig({
             minify: true,
             entry: '/src/main.ts',
             template: './public/index.html',
-            inject: {
-              data: {
-                lang: 'en',
-                title: 'Admin panel',
-                favicon: '/vite.svg',
-                faviconType: 'image/svg+xml',
-              },
-            },
           }),
           viteCompression({
             algorithm: 'gzip',
