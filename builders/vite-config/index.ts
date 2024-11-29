@@ -7,7 +7,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import viteCompression from 'vite-plugin-compression';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import viteImagemin from 'vite-plugin-imagemin';
-import { ProxyOptions, UserConfig } from 'vite';
+import { HmrOptions, ProxyOptions, UserConfig } from 'vite';
 
 const currentDirname = process.env['PWD'];
 const tsconfig = JSON.parse(readFileSync(path.resolve(currentDirname, 'tsconfig.json'), 'utf8'));
@@ -93,11 +93,13 @@ export function getConfig({
   proxy,
   preprocessorOptions,
   getJsChunksFileName,
+  hmr,
 }: {
   mode: string;
   proxy: Record<string, string | ProxyOptions>;
   preprocessorOptions?: Parameters<typeof getCssOptions>[0];
   getJsChunksFileName?: Parameters<typeof getBuildOptions>[0]['getJsChunksFileName'];
+  hmr?: HmrOptions
 }): UserConfig {
   switch (mode) {
     case 'analyze': {
@@ -199,6 +201,7 @@ export function getConfig({
         server: {
           port: 3000,
           proxy,
+          hmr: hmr ?? true,
         },
         resolve: { alias },
       };
