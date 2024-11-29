@@ -12,6 +12,7 @@
 ## Список библиотек
 
 - tscpaths - форк https://github.com/joonhocho/tscpaths, с фиксами
+- pinia-fetch-store - форк https://github.com/AgajLumbardh/pinia-fetch-store, с доработками
 
 ## Список конфигов для сборщиков
 
