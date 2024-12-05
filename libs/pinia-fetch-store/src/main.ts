@@ -47,12 +47,13 @@ function buildActions<E extends Endpoints>({
         const requestState = this?.[key];
 
         if (requestState?.loading) throw baseHttpError520WithCustomMessage('This request is already being executed');
-        if (requestState?.cached && requestState?.loaded) return { status: 'fulfilled', value: requestState.data };
+        const preparedParams = value.query(parameters);
+        if (preparedParams.cached && requestState?.loaded) return { status: 'fulfilled', value: requestState.data };
 
         this[key].abortController = new AbortController();
         this[key].loading = true;
 
-        const preparedConfig = prepareConfig(this[key].abortController.signal, value.query(parameters), baseUrl);
+        const preparedConfig = prepareConfig(this[key].abortController.signal, preparedParams, baseUrl);
         const response = await fetch(preparedConfig.url, preparedConfig.config);
 
         if (response.ok) {
