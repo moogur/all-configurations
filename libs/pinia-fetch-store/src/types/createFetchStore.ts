@@ -9,6 +9,7 @@ export type EndpointDefinition<ResultType, RequestArgument> = {
     url: string;
     convertResponse?: ConvertResponse;
     headers?: RequestInit['headers'];
+    cached?: boolean
   } & (
     | {
         method: GetMethod;

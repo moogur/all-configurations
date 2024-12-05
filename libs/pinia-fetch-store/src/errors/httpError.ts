@@ -39,3 +39,5 @@ const emptyResponse = {
 export const baseHttpError499 = new HTTPError({ ...emptyResponse, status: HttpStatus.ABORT, statusText: 'AbortError' }, null);
 export const baseHttpError520 = new HTTPError({ ...emptyResponse, status: HttpStatus.UNKNOWN, statusText: 'Unknown Error' }, null);
 export const baseHttpError524 = new HTTPError({ ...emptyResponse, status: HttpStatus.TIMEOUT, statusText: 'TimeoutError' }, null);
+
+export const baseHttpError520WithCustomMessage = (message: string) => new HTTPError({ ...emptyResponse, status: HttpStatus.UNKNOWN, statusText: message }, null);
