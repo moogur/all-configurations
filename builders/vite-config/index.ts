@@ -96,7 +96,7 @@ export function getConfig({
   hmr,
 }: {
   mode: string;
-  proxy: Record<string, string | ProxyOptions>;
+  proxy?: Record<string, string | ProxyOptions>;
   preprocessorOptions?: Parameters<typeof getCssOptions>[0];
   getJsChunksFileName?: Parameters<typeof getBuildOptions>[0]['getJsChunksFileName'];
   hmr?: HmrOptions

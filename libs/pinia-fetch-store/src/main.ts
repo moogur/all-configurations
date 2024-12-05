@@ -1,3 +1,4 @@
+import { preparedError, HTTPError, baseHttpError520WithCustomMessage } from './errors';
 import {
   CreateFetchStoreOptions,
   EndpointDefinition,
@@ -8,9 +9,7 @@ import {
   FetchStoreState,
   HttpStatus,
 } from './types';
-
 import { prepareConfig, additionToInitial } from './utils';
-import { preparedError, HTTPError } from './errors';
 
 // TODO сделано на основе - https://github.com/AgajLumbardh/pinia-fetch-store
 function buildState<E extends Endpoints>(endpoints: E): FetchStoreState<E> {
@@ -44,19 +43,21 @@ function buildActions<E extends Endpoints>({
 
   Object.entries(endpoints).forEach(([key, value]) => {
     actions[key + 'Action'] = async function (parameters: unknown) {
-      const requestState = this?.[key];
-
-      if (requestState?.loading) return;
-
-      this[key].abortController = new AbortController();
-      this[key].loading = true;
-
       try {
+        const requestState = this?.[key];
+
+        if (requestState?.loading) throw baseHttpError520WithCustomMessage('This request is already being executed');
+        if (requestState?.cached && requestState?.loaded) return { status: 'fulfilled', value: requestState.data };
+
+        this[key].abortController = new AbortController();
+        this[key].loading = true;
+
         const preparedConfig = prepareConfig(this[key].abortController.signal, value.query(parameters), baseUrl);
         const response = await fetch(preparedConfig.url, preparedConfig.config);
 
         if (response.ok) {
-          const data = response.status === HttpStatus.NO_CONTENT ? undefined : await response[preparedConfig.convertResponse]();
+          const data =
+            response.status === HttpStatus.NO_CONTENT ? undefined : await response[preparedConfig.convertResponse]();
 
           this[key] = {
             ...additionToInitial,
