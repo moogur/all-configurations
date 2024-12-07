@@ -43,11 +43,12 @@ function buildActions<E extends Endpoints>({
 
   Object.entries(endpoints).forEach(([key, value]) => {
     actions[key + 'Action'] = async function (parameters: unknown) {
+      const preparedParams = value.query(parameters);
+
       try {
         const requestState = this?.[key];
 
         if (requestState?.loading) throw baseHttpError520WithCustomMessage('This request is already being executed');
-        const preparedParams = value.query(parameters);
         if (preparedParams.cached && requestState?.loaded) return { status: 'fulfilled', value: requestState.data };
 
         this[key].abortController = new AbortController();
@@ -73,7 +74,7 @@ function buildActions<E extends Endpoints>({
       } catch (error: unknown) {
         const formattedError = preparedError(error);
 
-        await errorCallback?.(formattedError);
+        if (!preparedParams.skipErrorNotification) await errorCallback?.(formattedError);
 
         this[key] = {
           ...additionToInitial,

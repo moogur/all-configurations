@@ -3,8 +3,25 @@ import { EndpointDefinition } from '../types';
 import { defaultFetchParameters } from './constants';
 import { isObject } from './guards';
 
+function prepareValue<T>(key: string, value: T) {
+  switch (true) {
+    case Array.isArray(value): {
+      return value.reduce<string>((accumulator, current, index) => {
+        const str = key + '=' + current;
+        if (index) return accumulator + '&' + str;
+
+        return str;
+      }, '');
+    }
+
+    default: {
+      return key + '=' + value;
+    }
+  }
+}
+
 function convertValueToString<T>(key: string, value: T, index: number): string {
-  const valueInString = `${key}=${String(value)}`;
+  const valueInString = prepareValue(key, value);
 
   return index ? `&${valueInString}` : `?${valueInString}`;
 }
@@ -36,8 +53,8 @@ export function prepareConfig(
     config.body = externalConfig.body instanceof FormData ? externalConfig.body : JSON.stringify(externalConfig.body);
   }
 
-  if ('queryParameters' in externalConfig) {
-    url += converterQueryToString(externalConfig.queryParameters);
+  if ('query' in externalConfig) {
+    url += converterQueryToString(externalConfig.query);
   }
 
   return {
