@@ -1,11 +1,11 @@
 {
   "name": "@moogur/prettier",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Shareable Prettier configuration",
   "license": "ISC",
   "main": "index.json",
   "repository": "https://github.com/moogur/all-configurations",
   "peerDependencies": {
-    "prettier": "^3.0.3"
+    "prettier": "^3.5.2"
   }
 }

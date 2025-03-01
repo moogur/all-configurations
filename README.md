@@ -11,8 +11,11 @@
 
 ## Список библиотек
 
-- tscpaths - форк https://github.com/joonhocho/tscpaths, с фиксами
-- pinia-fetch-store - форк https://github.com/AgajLumbardh/pinia-fetch-store, с доработками
+- tscpaths - форк <https://github.com/joonhocho/tscpaths>, с фиксами
+- pinia-fetch-store - форк <https://github.com/AgajLumbardh/pinia-fetch-store>, с доработками
+- sonarqube-scanner - обертка над библиотекой <https://github.com/SonarSource/sonar-scanner-npm>, упрощающая взаимодействие
+- build-nestjs-app-in-one-file - собирает бекенд в один файл (бинарники тоже вытаскивает в общую папку), после этого при развертывании нужна только установленная nodejs. Для сборки используется `@vercel/ncc`
+- helpers - библиотека вспомогательных функции, является внутренней и используется в работе других приложений этого репозитория, не предназначена для установки в проекты
 
 ## Список конфигов для сборщиков
 
