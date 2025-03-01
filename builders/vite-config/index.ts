@@ -75,7 +75,7 @@ const getBuildOptions = ({
 
 const getCssOptions = (preprocessorOptions?: {
   additionalData?: string;
-  api?: 'modern-compiler' | 'modern' | 'legacy';
+  api?: 'modern-compiler' | 'modern';
 }) => {
   if (!preprocessorOptions) return {};
 
