@@ -1,28 +1,28 @@
 {
   "name": "@moogur/eslint-config-eslint-frontend",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Shareable ESLint frontend configuration",
   "license": "ISC",
   "main": "index.js",
   "repository": "https://github.com/moogur/all-configurations",
   "prettier": "@moogur/prettier",
   "devDependencies": {
-    "@moogur/prettier": "^0.1.0"
+    "@moogur/prettier": "^0.2.0"
   },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.30.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-no-use-extend-native": "^0.5.0",
     "eslint-plugin-optimize-regex": "^1.2.1",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-promise": "^7.1.0",
-    "eslint-plugin-sonarjs": "^2.0.3",
-    "eslint-plugin-unicorn": "^55.0.0",
-    "eslint-plugin-vue": "^9.28.0"
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-sonarjs": "^3.0.2",
+    "eslint-plugin-unicorn": "^56.0.1",
+    "eslint-plugin-vue": "^9.32.0"
   }
 }
