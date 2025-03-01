@@ -1,6 +1,6 @@
 {
   "name": "@moogur/pinia-fetch-store",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Fetch query library for store vue pinia",
   "license": "ISC",
   "main": "dist/index.js",
@@ -14,9 +14,9 @@
   "repository": "https://github.com/moogur/all-configurations",
   "prettier": "@moogur/prettier",
   "devDependencies": {
-    "@moogur/prettier": "^0.1.0"
+    "@moogur/prettier": "^0.2.0"
   },
   "dependencies": {
-    "typescript": "^5.6.2"
+    "typescript": "^5.8.2"
   }
 }

@@ -16,7 +16,7 @@
   "prettier": "@moogur/prettier",
   "dependencies": {},
   "devDependencies": {
-    "@moogur/prettier": "^0.1.0",
+    "@moogur/prettier": "^0.2.0",
     "husky": "^8.0.3",
     "lerna": "^7.3.0"
   }
