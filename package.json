@@ -18,6 +18,6 @@
   "devDependencies": {
     "@moogur/prettier": "^0.2.0",
     "husky": "^8.0.3",
-    "lerna": "^7.3.0"
+    "lerna": "^7.4.2"
   }
 }
