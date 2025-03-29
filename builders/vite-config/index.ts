@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 
-import vue from '@vitejs/plugin-vue';
+import solidPlugin from 'vite-plugin-solid';
 import { visualizer } from 'rollup-plugin-visualizer';
 import viteCompression from 'vite-plugin-compression';
 import { createHtmlPlugin } from 'vite-plugin-html';
@@ -40,7 +40,6 @@ const getBuildOptions = ({
         manualChunks: (filePath: string) => {
           if (/node_modules/.test(filePath)) {
             const libraryName = filePath.split('node_modules/')[1]?.split('/')[0]?.replace('@', '');
-            if (libraryName === 'vue' || libraryName === 'vue-router' || libraryName === 'pinia') return `lib.vue`;
 
             return getJsChunksFileName?.(libraryName, filePath) ?? 'lib.other';
           }
@@ -73,10 +72,7 @@ const getBuildOptions = ({
   };
 };
 
-const getCssOptions = (preprocessorOptions?: {
-  additionalData?: string;
-  api?: 'modern-compiler' | 'modern';
-}) => {
+const getCssOptions = (preprocessorOptions?: { additionalData?: string; api?: 'modern-compiler' | 'modern' }) => {
   if (!preprocessorOptions) return {};
 
   return {
@@ -99,7 +95,7 @@ export function getConfig({
   proxy?: Record<string, string | ProxyOptions>;
   preprocessorOptions?: Parameters<typeof getCssOptions>[0];
   getJsChunksFileName?: Parameters<typeof getBuildOptions>[0]['getJsChunksFileName'];
-  hmr?: HmrOptions
+  hmr?: HmrOptions;
 }): UserConfig {
   switch (mode) {
     case 'analyze': {
@@ -107,7 +103,7 @@ export function getConfig({
         root: currentDirname,
         ...getCssOptions(preprocessorOptions),
         plugins: [
-          vue(),
+          solidPlugin(),
           createHtmlPlugin({ template: './public/index-dev.html' }),
           visualizer({
             template: 'treemap', // treemap, sunburst, network
@@ -128,7 +124,7 @@ export function getConfig({
         root: currentDirname,
         ...getCssOptions(preprocessorOptions),
         plugins: [
-          vue(),
+          solidPlugin(),
           viteImagemin({
             gifsicle: {
               optimizationLevel: 7,
@@ -196,7 +192,7 @@ export function getConfig({
       return {
         root: currentDirname,
         ...getCssOptions(preprocessorOptions),
-        plugins: [vue(), createHtmlPlugin({ template: '/index-dev.html' })],
+        plugins: [solidPlugin(), createHtmlPlugin({ template: '/index-dev.html' })],
         build: { sourcemap: true },
         server: {
           port: 3000,
