@@ -1,13 +1,13 @@
 module.exports = {
-  parser: 'vue-eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
     project: ['./tsconfig.json'],
-    extraFileExtensions: ['.vue'],
   },
   plugins: [
     '@typescript-eslint',
+    'solid',
     'prettier',
     'unicorn',
     'import',
@@ -19,8 +19,8 @@ module.exports = {
   ],
   extends: [
     'airbnb-typescript/base',
-    'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:solid/typescript',
     'plugin:unicorn/recommended',
     'plugin:prettier/recommended',
     'prettier',
@@ -33,7 +33,7 @@ module.exports = {
     node: true,
     browser: true,
   },
-  ignorePatterns: ['node_modules', 'scripts', 'src/vite-env.d.ts', 'src/**/*.vue'],
+  ignorePatterns: ['node_modules', 'scripts', 'src/vite-env.d.ts'],
   settings: {
     'import/ignore': ['node_modules'],
   },
